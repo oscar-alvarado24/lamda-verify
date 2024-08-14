@@ -26,9 +26,9 @@ public class Handler implements RequestHandler<SQSEvent, Void> {
             Verification verification =
                     Verification.creator(SERVICE_SID,  Constants.COLOMBIAN_INDICATIVE.concat(msg.getBody()), Constants.SMS)
                             .create();
-            context.getLogger().log("codigo generado con el id: " + verification.getSid());
+            context.getLogger().log(Constants.MESSAGE_OK+ verification.getSid());
         } catch (Exception e) {
-            context.getLogger().log("An error occurred");
+            context.getLogger().log(Constants.MESSAGE_ERROR + e.getMessage());
             throw e;
         }
 
